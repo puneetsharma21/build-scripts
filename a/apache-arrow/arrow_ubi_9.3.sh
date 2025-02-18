@@ -102,9 +102,7 @@ else
     echo "$PACKAGE_NAME  |  $PACKAGE_URL | $PACKAGE_VERSION | $OS_NAME | GitHub  | Pass |  Build_Success"
 fi
 
-
-pip${PYTHON_VER} install pytest==6.2.5
-pip${PYTHON_VER} install pytest-lazy-fixture hypothesis
+pip${PYTHON_VER} install pytest pytest-lazy-fixture hypothesis
 export PYTEST_PATH=$(pwd)/pyarrow
 
 # Skipped specific tests
