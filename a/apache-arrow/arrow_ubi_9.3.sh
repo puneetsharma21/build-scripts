@@ -108,7 +108,14 @@ pip${PYTHON_VER} install pytest-lazy-fixture hypothesis
 export PYTEST_PATH=$(pwd)/pyarrow
 
 # Skipped specific tests
-export PYTEST_ADDOPTS="-k 'not test_cython and not test_extension_type' --deselect=pyarrow/tests/test_extension_type.py --deselect=pyarrow/tests/parquet --deselect=pyarrow/tests/test_dataset.py --deselect=pyarrow/tests/test_pandas.py --deselect=pyarrow/tests/test_acero.py --deselect=pyarrow/tests/conftest.py"
+export PYTEST_ADDOPTS="-k 'not test_cython and not test_extension_type' \
+    --deselect=pyarrow/tests/test_extension_type.py \
+    --deselect=pyarrow/tests/parquet \
+    --deselect=pyarrow/tests/test_dataset.py \
+    --deselect=pyarrow/tests/test_pandas.py \
+    --deselect=pyarrow/tests/test_acero.py \
+    --ignore=pyarrow/tests/conftest.py"
+
 # Run Python tests
 if ! python${PYTHON_VER} -m pytest $PYTEST_PATH ; then
     echo "------------------$PACKAGE_NAME::install_success_but_test_fails-------------------------"
